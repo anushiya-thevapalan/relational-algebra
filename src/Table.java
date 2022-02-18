@@ -218,6 +218,11 @@ public class Table {
         List<Comparable[]> rows = new ArrayList<>();
 
         //  T O   B E   I M P L E M E N T E D
+        Comparable [] matchTuples = index.get(keyVal);
+        if(matchTuples != null){
+            //if the keyVal exists, add the values to rows
+            rows.add(matchTuples);
+        }
 
         return new Table(name + count++, attribute, domain, key, rows);
     } // select
