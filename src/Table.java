@@ -279,6 +279,18 @@ public class Table {
         List<Comparable[]> rows = new ArrayList<>();
 
         //  T O   B E   I M P L E M E N T E D
+        for (Comparable[] tuple1: this.tuples){
+            boolean exists = false;
+            for (Comparable[] tuple2: table2.tuples){
+                if (tuple1 == tuple2){
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists){
+                rows.add(tuple1);
+            }
+        }
 
         return new Table(name + count++, attribute, domain, key, rows);
     } // minus
