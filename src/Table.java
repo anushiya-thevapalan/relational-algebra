@@ -311,6 +311,19 @@ public class Table {
         List<Comparable[]> rows = new ArrayList<>();
 
         //  T O   B E   I M P L E M E N T E D
+        List<String> table2attrs = new ArrayList<String>();
+
+        for (String attr: table2.attribute){
+            if (Arrays.asList(this.attribute).contains(attr)){
+                table2attrs.add(attr);
+            }
+        }
+
+        this.tuples.forEach(tuple1 -> {
+            table2.tuples.forEach(tuple2 -> {
+                rows.add(ArrayUtil.concat(tuple1, table2.extract(tuple2, table2attrs.toArray(new String[table2attrs.size()]))));
+            });
+        });
 
         // FIX - eliminate duplicate columns
         return new Table(name + count++, ArrayUtil.concat(attribute, table2.attribute),
