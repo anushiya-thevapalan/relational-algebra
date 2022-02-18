@@ -242,6 +242,23 @@ public class Table {
         List<Comparable[]> rows = new ArrayList<>();
 
         //  T O   B E   I M P L E M E N T E D
+        rows.addAll(this.tuples);
+
+        // checks table2 for unique tuples
+        table2.tuples.forEach((tuple2) -> {
+            boolean exists = false;
+            for (Comparable[] tuple1 : this.tuples) {
+                if (tuple2 == tuple1) {
+                    exists = true;
+                    break;
+                }
+            }
+            // adds tuples to the rows
+            if (!exists) {
+                rows.add(tuple2);
+            }
+        });
+
 
         return new Table(name + count++, attribute, domain, key, rows);
     } // union
